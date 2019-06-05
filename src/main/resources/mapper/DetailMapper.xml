@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<mapper namespace="cn.emrys.springboot.mapper.DetailMapper">
+
+    <!--根据文章id查询文章详情-->
+    <select id="findById" resultType="cn.emrys.springboot.entity.Detail" parameterType="int">
+        select * from blog_user where id = #{id}
+    </select>
+
+</mapper>
