@@ -8,4 +8,6 @@ import java.util.List;
 @Mapper
 public interface DetailMapper {
     List<Detail> findById(int id);
+
+    List<Detail> findAll();
 }

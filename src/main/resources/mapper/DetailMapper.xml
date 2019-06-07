@@ -17,4 +17,9 @@
     <select id="findByUid" resultType="cn.emrys.springboot.entity.Detail" parameterType="int">
         select * from blog_detail where uid = #{uid}
     </select>
+
+    <!--获取所有文章-->
+    <select id="findAll" resultType="cn.emrys.springboot.entity.Detail">
+        select * from blog_detail
+    </select>
 </mapper>

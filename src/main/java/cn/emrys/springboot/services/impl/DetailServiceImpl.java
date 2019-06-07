@@ -14,11 +14,20 @@ public class DetailServiceImpl implements DetailService {
     @Autowired
     DetailMapper detailMapper;
 
+    /**
+     * 查询所有的文章详情
+     * @return
+     */
     @Override
     public List<Detail> findAll() {
-        return null;
+        return detailMapper.findAll();
     }
 
+    /**
+     * 根据id查询单个文章的详情
+     * @param id
+     * @return
+     */
     @Override
     public List<Detail> findById(int id) {
         return detailMapper.findById(id);

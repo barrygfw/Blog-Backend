@@ -1,5 +1,10 @@
 package cn.emrys.springboot.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
 public class User {
     /**
      * 用户id
@@ -8,16 +13,22 @@ public class User {
     /**
      * 用户名
      */
+    @NotEmpty(message = "用户名不能为空")
     private String user_name;
     /**
      * 密码
      */
+    @NotEmpty(message = "密码不能为空")
     private String password;
-
     /**
      * 邮箱
      */
+    @Email(message = "邮箱格式不正确")
     private String email;
+
+    private int login_last_time;
+
+    private int login_times;
 
     public void setId(int id) {
         this.id = id;
@@ -49,5 +60,13 @@ public class User {
 
     public String getEmail() {
         return email;
+    }
+
+    public int getLogin_times() {
+        return login_times;
+    }
+
+    public void setLogin_times(int login_times) {
+        this.login_times = login_times;
     }
 }

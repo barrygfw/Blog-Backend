@@ -8,4 +8,19 @@
         select * from blog_user
     </select>
 
+    <!--根据用户名查询用户-->
+    <select id="findByName" resultType="cn.emrys.springboot.entity.User" parameterType="String">
+        select * from blog_user where user_name = #{user_name}
+    </select>
+
+    <!--添加用户-->
+    <select id="create" parameterType="cn.emrys.springboot.entity.User">
+        insert into blog_user(user_name, password, email, login_last_time, login_times) values (#{user_name}, #{password}, #{email}, #{login_last_time}, #{login_times})
+    </select>
+
+    <!--更新用户-->
+    <select id="update" parameterType="cn.emrys.springboot.entity.User">
+        update blog_user set password = #{password}, email = #{email}, login_last_time = #{login_last_time}, login_times = #{login_times} where id = #{id}
+    </select>
+
 </mapper>

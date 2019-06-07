@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void create(User user) {
-
+        userMapper.create(user);
     }
 
     @Override
@@ -36,6 +36,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void update(User user) {
+        userMapper.update(user);
+    }
 
+    public User findByName(String user_name) {
+        return userMapper.findByName(user_name);
     }
 }
