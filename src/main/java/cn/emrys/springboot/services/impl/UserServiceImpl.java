@@ -31,7 +31,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void delete(int... ids) {
-
+        for (int id : ids) {
+            userMapper.delete(id);
+        }
     }
 
     @Override
@@ -41,5 +43,9 @@ public class UserServiceImpl implements UserService {
 
     public User findByName(String user_name) {
         return userMapper.findByName(user_name);
+    }
+
+    public List<User> searchByName(String name) {
+        return userMapper.searchByName(name);
     }
 }

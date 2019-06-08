@@ -26,9 +26,11 @@ public class User {
     @Email(message = "邮箱格式不正确")
     private String email;
 
-    private int login_last_time;
+    private String img;
 
     private int login_times;
+
+    private int status;
 
     public void setId(int id) {
         this.id = id;
@@ -68,5 +70,21 @@ public class User {
 
     public void setLogin_times(int login_times) {
         this.login_times = login_times;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public int getStatus() {
+        return status;
     }
 }

@@ -26,4 +26,15 @@ public class UserController {
     public Response update(@RequestBody @Valid User user, BindingResult bindingResult) {
         return new Response(200,"succsss");
     }
+
+    @GetMapping("/searchByName")
+    public List<User> searchByName(String name) {
+        return userService.searchByName(name);
+    }
+
+    @DeleteMapping("delete")
+    public Response delete(@RequestBody int[] ids) {
+        userService.delete(ids);
+        return new Response(200, "删除成功");
+    }
 }

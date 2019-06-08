@@ -18,9 +18,32 @@
         insert into blog_user(user_name, password, email, login_last_time, login_times) values (#{user_name}, #{password}, #{email}, #{login_last_time}, #{login_times})
     </select>
 
-    <!--更新用户-->
+    <!--更新用户信息-->
     <select id="update" parameterType="cn.emrys.springboot.entity.User">
         update blog_user set password = #{password}, email = #{email}, login_last_time = #{login_last_time}, login_times = #{login_times} where id = #{id}
+    </select>
+
+    <!--更新用户状态-->
+    <select id="updata_status" parameterType="int">
+        update blog_user set status = #{status} where id = #{id}
+    </select>
+
+    <!--删除用户-->
+    <select id="delete" parameterType="int">
+        delete from blog_user where id = #{id}
+    </select>
+
+    <!--用户管理获取用户(可查找)-->
+    <select id="searchByName" parameterType="String" resultType="cn.emrys.springboot.entity.User">
+        select * from blog_user
+        <choose>
+            <when test="_parameter != null and _parameter != ''">
+                where user_name like concat('%',#{name},'%') ORDER BY `id`
+            </when>
+            <otherwise>
+                ORDER BY `id` limit 20
+            </otherwise>
+        </choose>
     </select>
 
 </mapper>

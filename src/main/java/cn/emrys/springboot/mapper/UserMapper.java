@@ -11,7 +11,13 @@ public interface UserMapper {
 
     User findByName(String user_name);
 
+    List<User> searchByName(String name);
+
     void create(User user);
 
     void update(User user);
+
+    void update_status(int id);
+
+    void delete(int id);
 }
