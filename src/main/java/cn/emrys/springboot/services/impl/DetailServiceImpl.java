@@ -34,17 +34,17 @@ public class DetailServiceImpl implements DetailService {
     }
 
     @Override
-    public void create(Detail detail) {
-
+    public int create(Detail detail) {
+        return 0;
     }
 
     @Override
-    public void delete(int... ids) {
-
+    public int delete(int... ids) {
+        return 0;
     }
 
     @Override
-    public void update(Detail detail) {
-
+    public int update(Detail detail) {
+        return 0;
     }
 }

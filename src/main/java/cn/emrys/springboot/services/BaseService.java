@@ -10,11 +10,11 @@ public interface BaseService<T> {
     List<T> findById(int id);
 
     //添加
-    void create(T t);
+    int create(T t);
 
     //删除(批量)
-    void delete(int... ids);
+    int delete(int... ids);
 
     //修改
-    void update(T t);
+    int update(T t);
 }

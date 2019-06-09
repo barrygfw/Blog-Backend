@@ -25,27 +25,36 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void create(User user) {
-        userMapper.create(user);
+    public int create(User user) {
+        return userMapper.create(user);
     }
 
     @Override
-    public void delete(int... ids) {
+    public int delete(int... ids) {
+        int num = 0;
         for (int id : ids) {
-            userMapper.delete(id);
+            num += userMapper.delete(id);
         }
+        return num;
     }
 
     @Override
-    public void update(User user) {
-        userMapper.update(user);
+    public int update(User user) {
+        return userMapper.update(user);
     }
 
+    @Override
     public User findByName(String user_name) {
         return userMapper.findByName(user_name);
     }
 
+    @Override
     public List<User> searchByName(String name) {
         return userMapper.searchByName(name);
+    }
+
+    @Override
+    public int update_status(int id, int status) {
+        return userMapper.status(id, status);
     }
 }

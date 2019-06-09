@@ -8,4 +8,6 @@ public interface UserService extends BaseService<User>{
     User findByName(String user_name);
 
     List<User> searchByName(String name);
+
+    int update_status(int id, int status);
 }
