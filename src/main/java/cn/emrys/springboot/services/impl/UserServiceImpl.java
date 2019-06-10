@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findById(int id) {
+    public User findById(int id) {
         return null;
     }
 

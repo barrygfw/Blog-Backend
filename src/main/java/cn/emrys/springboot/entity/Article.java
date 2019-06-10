@@ -12,9 +12,17 @@ public class Article {
     private Integer publishDate;
     private Integer state;
     private Integer editTime;
-    private String nickname;
+    private String user_name;
     private String cateName;
     private String stateStr;
+
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
+    }
+
+    public String getUser_name() {
+        return user_name;
+    }
 
     public String getStateStr() {
         return stateStr;
@@ -22,14 +30,6 @@ public class Article {
 
     public void setStateStr(String stateStr) {
         this.stateStr = stateStr;
-    }
-
-    public String getNickname() {
-        return nickname;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
     }
 
     public String getCateName() {

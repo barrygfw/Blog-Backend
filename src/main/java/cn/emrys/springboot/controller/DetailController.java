@@ -20,7 +20,7 @@ public class DetailController {
      * @return
      */
     @GetMapping("/{id}")
-    public List<Detail> getById(@PathVariable int id) {
+    public Detail getById(@PathVariable int id) {
         return detailService.findById(id);
     }
 

@@ -20,8 +20,8 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public List<Article> findById(int id) {
-        return null;
+    public Article findById(int id) {
+        return articleMapper.findById(id);
     }
 
     @Override

@@ -27,4 +27,25 @@ public class ArticleController {
         res.put("articles", articles);
         return new Response(200, "获取数据成功", res);
     }
+
+    @GetMapping("/{id}")
+    public Response findById(@PathVariable int id) {
+        Article res = articleService.findById(id);
+        return new Response(200, "success", res);
+    }
+
+    @PutMapping("/update")
+    public Response update(@RequestBody Article article) {
+        return new Response(200, "success");
+    }
+
+    @PostMapping("create")
+    public Response create(@RequestBody Article article) {
+        return new Response(200, "success");
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public Response delete(@PathVariable int id) {
+        return new Response(200, "success");
+    }
 }

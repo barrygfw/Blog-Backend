@@ -11,4 +11,6 @@ public interface ArticleMapper {
     List<Article> all(int state, int uid, String keywords, int start, int end);
 
     int allCount(int state, int uid, String keywords);
+
+    Article findById(int id);
 }

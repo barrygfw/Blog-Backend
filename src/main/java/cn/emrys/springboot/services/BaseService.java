@@ -7,7 +7,7 @@ public interface BaseService<T> {
     List<T> findAll();
 
     //根据id查询
-    List<T> findById(int id);
+    T findById(int id);
 
     //添加
     int create(T t);

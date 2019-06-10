@@ -29,7 +29,7 @@ public class DetailServiceImpl implements DetailService {
      * @return
      */
     @Override
-    public List<Detail> findById(int id) {
+    public Detail findById(int id) {
         return detailMapper.findById(id);
     }
 
