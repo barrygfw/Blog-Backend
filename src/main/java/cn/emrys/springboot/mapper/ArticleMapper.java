@@ -13,4 +13,8 @@ public interface ArticleMapper {
     int allCount(int state, int uid, String keywords);
 
     Article findById(int id);
+
+    int update(Article article);
+
+    int create(Article article);
 }

@@ -26,7 +26,9 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public int create(Article article) {
-        return 0;
+        article.setPublishDate((int)(System.currentTimeMillis() / 1000));
+        article.setEditTime((int)(System.currentTimeMillis() / 1000));
+        return articleMapper.create(article);
     }
 
     @Override
@@ -36,7 +38,8 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public int update(Article article) {
-        return 0;
+        article.setEditTime((int) (System.currentTimeMillis() / 1000));
+        return articleMapper.update(article);
     }
 
     @Override

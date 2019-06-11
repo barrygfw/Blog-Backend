@@ -17,6 +17,15 @@ public class ArticleController {
     @Autowired
     ArticleService articleService;
 
+    /**
+     * 获取所有文章(分页)
+     * @param state 文章状态 0草稿箱,1已发表,2已删除
+     * @param uid 作者id
+     * @param keywords 文章标题模糊搜索
+     * @param page 第几页
+     * @param page_size 页面大小
+     * @return 文章列表
+     */
     @GetMapping("all")
     public Response findAll(@RequestParam int state, @RequestParam int uid, @RequestParam String keywords, @RequestParam int page, @RequestParam int page_size) {
         int start = (page - 1) * page_size;
@@ -34,14 +43,24 @@ public class ArticleController {
         return new Response(200, "success", res);
     }
 
-    @PutMapping("/update")
+    @PostMapping("/update")
     public Response update(@RequestBody Article article) {
-        return new Response(200, "success");
+        try {
+            if (articleService.update(article) != 1) throw new Exception("更新失败");
+            else return new Response(200, "更新成功");
+        }catch(Exception e) {
+            return new Response(500, e.getMessage());
+        }
     }
 
     @PostMapping("create")
     public Response create(@RequestBody Article article) {
-        return new Response(200, "success");
+        try{
+            if (articleService.create(article) != 1) throw new Exception("添加失败");
+            else return new Response(200, "添加成功");
+        }catch(Exception e) {
+            return new Response(500, e.getMessage());
+        }
     }
 
     @DeleteMapping("/delete/{id}")

@@ -36,4 +36,14 @@
         select a.*,u.user_name,c.cateName from blog_article a,blog_user u,blog_category c
         where a.uid=u.id and a.cid=c.id and a.id=#{id}
     </select>
+
+    <update id="update" parameterType="cn.emrys.springboot.entity.Article">
+        update blog_article set cid = #{cid}, htmlContent = #{htmlContent}, mdContent = #{mdContent}, state = #{state}, title = #{title}, editTime = #{editTime}
+        where id = #{id}
+    </update>
+
+    <insert id="create" parameterType="cn.emrys.springboot.entity.Article">
+        insert into blog_article (`title`,`mdContent`,`htmlContent`,`cid`,`uid`,`publishDate`,`editTime`,`state`)
+        value (#{title},#{mdContent},#{htmlContent},#{cid},#{uid},#{publishDate},#{editTime},#{state})
+    </insert>
 </mapper>
