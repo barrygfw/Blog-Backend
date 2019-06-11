@@ -24,17 +24,6 @@ public class UserController {
     }
 
     /**
-     * 更新用户信息
-     * @param user
-     * @param bindingResult
-     * @return
-     */
-    @PostMapping("update")
-    public Response update(@RequestBody @Valid User user, BindingResult bindingResult) {
-        return new Response(200,"succsss");
-    }
-
-    /**
      * 通过用户名获取用户列表
      * @param name
      * @return

@@ -17,4 +17,8 @@ public interface ArticleMapper {
     int update(Article article);
 
     int create(Article article);
+
+    int recycle(int id);
+
+    int delete(int id);
 }

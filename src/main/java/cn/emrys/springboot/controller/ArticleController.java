@@ -3,6 +3,7 @@ package cn.emrys.springboot.controller;
 import cn.emrys.springboot.entity.Article;
 import cn.emrys.springboot.entity.Response;
 import cn.emrys.springboot.services.ArticleService;
+import com.fasterxml.classmate.types.ResolvedPrimitiveType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -63,8 +64,16 @@ public class ArticleController {
         }
     }
 
-    @DeleteMapping("/delete/{id}")
-    public Response delete(@PathVariable int id) {
-        return new Response(200, "success");
+    @DeleteMapping("/delete/{state}")
+    public Response delete(@RequestBody int[] ids, @PathVariable int state) {
+        int num;
+        try{
+            if (state == 2) num = articleService.delete(ids);
+            else num = articleService.recycle(ids);
+            if (num == 0) throw new Exception("删除失败");
+            else return new Response(200,"删除成功");
+        }catch(Exception e) {
+            return new Response(500, e.getMessage());
+        }
     }
 }

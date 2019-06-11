@@ -46,4 +46,12 @@
         insert into blog_article (`title`,`mdContent`,`htmlContent`,`cid`,`uid`,`publishDate`,`editTime`,`state`)
         value (#{title},#{mdContent},#{htmlContent},#{cid},#{uid},#{publishDate},#{editTime},#{state})
     </insert>
+
+    <update id="recycle" parameterType="int">
+        update blog_article set state = 2 where id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        delete from blog_article where id = #{id}
+    </delete>
 </mapper>

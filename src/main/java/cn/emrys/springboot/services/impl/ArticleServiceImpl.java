@@ -33,7 +33,11 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public int delete(int... ids) {
-        return 0;
+        int num = 0;
+        for (int id : ids) {
+            num += articleMapper.delete(id);
+        }
+        return num;
     }
 
     @Override
@@ -50,5 +54,14 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public int allCount(int state, int uid, String keywords) {
         return articleMapper.allCount(state, uid, keywords);
+    }
+
+    @Override
+    public int recycle(int... ids) {
+        int num = 0;
+        for (int id : ids) {
+            num += articleMapper.recycle(id);
+        }
+        return num;
     }
 }
