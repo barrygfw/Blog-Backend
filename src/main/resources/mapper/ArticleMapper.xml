@@ -30,7 +30,7 @@
                 AND uid=#{uid}
             </if>
             <if test="cid!=0">
-                and a.cid=#{cid}
+                and cid=#{cid}
             </if>
             <if test="keywords!=null">
                 AND title LIKE concat('%',#{keywords},'%')
