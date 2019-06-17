@@ -8,9 +8,9 @@ import java.util.List;
 @Mapper
 public interface ArticleMapper {
 
-    List<Article> all(int state, int uid, String keywords, int start, int end);
+    List<Article> all(int state, int uid, int cid, String keywords, int start, int end);
 
-    int allCount(int state, int uid, String keywords);
+    int allCount(int state, int uid, int cid, String keywords);
 
     Article findById(int id);
 
@@ -21,4 +21,6 @@ public interface ArticleMapper {
     int recycle(int id);
 
     int delete(int id);
+
+    List<Article> allByCateId(int cid);
 }

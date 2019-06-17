@@ -28,10 +28,10 @@ public class ArticleController {
      * @return 文章列表
      */
     @GetMapping("all")
-    public Response findAll(@RequestParam int state, @RequestParam int uid, @RequestParam String keywords, @RequestParam int page, @RequestParam int page_size) {
+    public Response findAll(@RequestParam int state, @RequestParam int uid,@RequestParam int cid, @RequestParam String keywords, @RequestParam int page, @RequestParam int page_size) {
         int start = (page - 1) * page_size;
-        List<Article> articles = articleService.all(state, uid, keywords, start, page_size);
-        int totalCount = articleService.allCount(state, uid, keywords);
+        List<Article> articles = articleService.all(state, uid, cid,keywords, start, page_size);
+        int totalCount = articleService.allCount(state, uid, cid, keywords);
         Map<String, Object> res = new HashMap<>();
         res.put("totalCount", totalCount);
         res.put("articles", articles);
@@ -40,8 +40,12 @@ public class ArticleController {
 
     @GetMapping("/{id}")
     public Response findById(@PathVariable int id) {
-        Article res = articleService.findById(id);
-        return new Response(200, "success", res);
+        try {
+            Article res = articleService.findById(id);
+            return new Response(200, "success", res);
+        }catch(Exception e) {
+            return new Response(500, e.getMessage());
+        }
     }
 
     @PostMapping("/update")
@@ -76,4 +80,5 @@ public class ArticleController {
             return new Response(500, e.getMessage());
         }
     }
+
 }

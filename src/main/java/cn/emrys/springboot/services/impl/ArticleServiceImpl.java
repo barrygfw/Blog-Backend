@@ -47,13 +47,13 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public List<Article> all(int state, int uid, String keywords, int start, int end) {
-        return articleMapper.all(state, uid, keywords, start, end);
+    public List<Article> all(int state, int uid, int cid, String keywords, int start, int end) {
+        return articleMapper.all(state, uid, cid, keywords, start, end);
     }
 
     @Override
-    public int allCount(int state, int uid, String keywords) {
-        return articleMapper.allCount(state, uid, keywords);
+    public int allCount(int state, int uid, int cid, String keywords) {
+        return articleMapper.allCount(state, uid, cid, keywords);
     }
 
     @Override
@@ -63,5 +63,10 @@ public class ArticleServiceImpl implements ArticleService {
             num += articleMapper.recycle(id);
         }
         return num;
+    }
+
+    @Override
+    public List<Article> allByCateId(int cid) {
+        return articleMapper.allByCateId(cid);
     }
 }

@@ -11,6 +11,9 @@
         <if test="uid!=0">
             and a.uid=#{uid}
         </if>
+        <if test="cid!=0">
+            and a.cid=#{cid}
+        </if>
         <if test="keywords!=null">
             AND title LIKE concat('%',#{keywords},'%')
         </if>
@@ -25,6 +28,9 @@
             </if>
             <if test="uid!=0">
                 AND uid=#{uid}
+            </if>
+            <if test="cid!=0">
+                and a.cid=#{cid}
             </if>
             <if test="keywords!=null">
                 AND title LIKE concat('%',#{keywords},'%')
@@ -54,4 +60,19 @@
     <delete id="delete" parameterType="int">
         delete from blog_article where id = #{id}
     </delete>
+    
+    <select id="allByCateId" parameterType="int" resultType="cn.emrys.springboot.entity.Article">
+        select a.id,a.title,a.publishDate,a.editTime,a.state,u.user_name,c.cateName
+        from blog_article a,blog_user u,blog_category c where a.uid=u.id and a.cid=c.id
+        <if test="state!=-1">
+            and a.state=#{state}
+        </if>
+        <if test="uid!=0">
+            and a.uid=#{uid}
+        </if>
+        <if test="keywords!=null">
+            AND title LIKE concat('%',#{keywords},'%')
+        </if>
+        ORDER BY a.editTime DESC limit #{start},#{end}
+    </select>
 </mapper>

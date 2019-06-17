@@ -15,7 +15,7 @@
 
     <!--添加用户-->
     <insert id="create" parameterType="cn.emrys.springboot.entity.User">
-        insert into blog_user(user_name, password, email, login_last_time, login_times) values (#{user_name}, #{password}, #{email}, #{login_last_time}, #{login_times})
+        insert into blog_user(user_name, password, emaill) values (#{user_name}, #{password}, #{email})
     </insert>
 
     <!--更新用户信息-->
